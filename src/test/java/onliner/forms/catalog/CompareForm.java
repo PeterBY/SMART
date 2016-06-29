@@ -20,6 +20,7 @@ public abstract class CompareForm extends OnlinerForm {
 	}
 
 	public List<String> getListFieldItems(String nameField) {
+		logger.info("Получение значений поля: " + nameField);
 		List<String> result = new ArrayList<String>();
 
 		int numberComparedItems = new Label(By.xpath(locatorItems)).getListWebElements(By.xpath(locatorItems)).size();

@@ -9,7 +9,12 @@ public class CompareMobilesForm extends CompareForm {
 
 	public void assertResultCompare(double sizeMin, double sizeMax, double ramMin, double ramMax, int batteryMin, int batteryMax) {
 		logger.info("Проверка результата поиска");
+		assertSize(sizeMin, sizeMax);
+		assertRam(ramMin, ramMax);
+		assertBattery(batteryMin, batteryMax);
+	}
 
+	public void assertSize(double sizeMin, double sizeMax) {
 		logger.info("Проверка размера экрана");
 		List<String> listSizeItems = getListFieldItems("Размер экрана");
 		for (String s : listSizeItems) {
@@ -21,7 +26,9 @@ public class CompareMobilesForm extends CompareForm {
 				flag = false;
 			doAssert(flag, "Размер экрана " + size + ": Ok!", "Размер экрана " + size + ": Error!");
 		}
+	}
 
+	public void assertRam(double ramMin, double ramMax) {
 		logger.info("Проверка объёма памяти");
 		List<String> listRamItems = getListFieldItems("Оперативная память");
 		for (String s : listRamItems) {
@@ -33,7 +40,9 @@ public class CompareMobilesForm extends CompareForm {
 				flag = false;
 			doAssert(flag, "Объём памяти " + ram + "Гб: Ok!", "Объём памяти " + ram + "Гб: Error!");
 		}
+	}
 
+	public void assertBattery(int batteryMin, int batteryMax) {
 		logger.info("Проверка ёмкости аккумулятора");
 		List<String> listBatteryItems = getListFieldItems("Ёмкость аккумулятора");
 		for (String s : listBatteryItems) {
@@ -45,7 +54,5 @@ public class CompareMobilesForm extends CompareForm {
 				flag = false;
 			doAssert(flag, "Ёмкость аккумулятора " + battery + " мА·ч: Ok!", "Ёмкость аккумулятора " + battery + " мА·ч: Error!");
 		}
-
-
 	}
 }

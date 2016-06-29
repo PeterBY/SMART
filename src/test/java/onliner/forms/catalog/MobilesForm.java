@@ -22,6 +22,7 @@ public class MobilesForm extends ItemsForm {
 	}
 
 	public void searchItems(double sizeMin, double sizeMax, double ramMin, double ramMax, int batteryMin, int batteryMax) {
+		logger.info("Поиск товаров");
 		searchItemsByScreenSize(sizeMin, sizeMax);
 		searchItemsByRamSize(ramMin, ramMax);
 		searchItemsByBatteryCapacity(batteryMin, batteryMax);

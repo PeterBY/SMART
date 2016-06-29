@@ -25,6 +25,7 @@ public abstract class OnlinerForm extends BaseForm {
 	}
 
 	public void login(String login, String password) {
+		logger.info("Логин пользователя");
 		if (lblTopProfile.isPresent())
 			logger.error("Пользователь уже вошёл");
 		else {
@@ -37,27 +38,32 @@ public abstract class OnlinerForm extends BaseForm {
 	}
 
 	public ProfileForm goToProfile(){
+		logger.info("Переход в профиль");
 		lblTopProfile.waitForIsElementPresent();
 		lnkProfile.clickAndWait();
 		return new ProfileForm();
 	}
 
 	public void navigateTopMenu(String menuItem) {
+		logger.info("Переход из главного меню в : " + menuItem);
 		String menuItemLocator = String.format(locatorTopMenu, menuItem);
 		Link menuLink = new Link(By.xpath(menuItemLocator), "Ссылка на " + menuItem);
 		menuLink.clickAndWait();
 	}
 
 	public void logout() {
+		logger.info("Выход из аккаунта");
 		lnkExit.clickAndWait();
 	}
 
 	public void searchItem(String nameItem) {
+		logger.info("Поиск товара");
 		txbSearchItem.setText(nameItem);
 		lblSearchFrame.switchToFrame();
 	}
 
 	public void goToCart() {
+		logger.info("Переход в корзину");
 		lnkCart.clickAndWait();
 	}
 }

@@ -25,18 +25,21 @@ public class ProfileForm extends OnlinerForm {
 	}
 
 	public void navigateProfileMenu(String menuItem) {
+		logger.info("Навигация по меню профиля: " + menuItem);
 		String menuItemLocator = String.format(locatorProfileMenu, menuItem);
 		Link menuLink = new Link(By.xpath(menuItemLocator), "menu link " + menuItem);
 		menuLink.clickAndWait();
 	}
 
 	public void navigateProfilePrivateDataTabs(String menuItem) {
+		logger.info("Навигация по меню личных данных: " + menuItem);
 		String menuItemLocator = String.format(locatorProfilePrivateDataTabs, menuItem);
 		Link menuLink = new Link(By.xpath(menuItemLocator), "menu link " + menuItem);
 		menuLink.clickAndWait();
 	}
 
 	public void chekBirthDayProperties(int day, int month, int year) {
+		logger.info("Проверка даты рождения");
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
 		Calendar calendar = Calendar.getInstance(new Locale("ru", "RU"));
 		calendar.set(year, month - 1, day);

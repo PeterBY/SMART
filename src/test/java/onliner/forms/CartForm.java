@@ -21,10 +21,12 @@ public class CartForm extends BaseForm {
 
 
 	public void assertNameItem(String nameItem) {
+		logger.info("Проверка содержимого корзины");
 		doAssert(lblNameItem.getText().contains(nameItem), "Ok: название товара соответвует поисковому", "Error: название товара не соответвует поисковому");
 	}
 
 	public void clear() {
+		logger.info("Очистка корзины");
 		List<BaseElement> list = btnDeleteItem.getAllElements();
 		for (BaseElement el: list) {
 			((Button) el).clickAndWait();

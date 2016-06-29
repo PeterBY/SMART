@@ -14,6 +14,7 @@ public class OffersForm extends CatalogForm {
 	}
 
 	public void addToCartFirstOffer() {
+		logger.info("Добавление в корзину первого в списке предложения");
 		btnAddToCart.clickAndWait();
 	}
 }

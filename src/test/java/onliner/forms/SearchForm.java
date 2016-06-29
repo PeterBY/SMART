@@ -16,10 +16,12 @@ public class SearchForm extends BaseForm {
 	}
 
 	public void goToFirstItemOffers() {
+		logger.info("Переход к предложениям для первого товара в списке");
 		btnFirstItemOffers.clickAndWait();
 	}
 
 	public void close() {
+		logger.info("Закрытие поисковой формы");
 		btnCloseSearchForm.clickAndWait();
 		btnCloseSearchForm.switchToDefault();
 	}
