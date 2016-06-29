@@ -11,6 +11,10 @@ import java.util.List;
 public class CompareNotebooksForm extends CompareForm {
 	private final String locatorBrandNameItem = "//span[@class='product-summary__caption']";
 
+	/**
+	 * Assert search by BrandName
+	 * @param brandName
+	 */
 	public void assertSearchResultByBrandName(String brandName) {
 		logger.info("Проверка результата поиска");
 

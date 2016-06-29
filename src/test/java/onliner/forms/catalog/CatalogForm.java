@@ -18,6 +18,10 @@ public class CatalogForm extends OnlinerForm {
 		super(locator, formTitle);
 	}
 
+	/**
+	 * Navigate Catalog menu
+	 * @param menuItem
+	 */
 	public void navigateCatalogMenu(String menuItem) {
 		logger.info("Переход в раздел: " + menuItem);
 		Link linkCatalogMenuItem = new Link(By.xpath(String.format(locatorCatalogMenuItem, menuItem)), "Меню каталога " + menuItem);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Страница сравнения.
+ * Абстрактный класс, описывает страницу сравнения.
  */
 public abstract class CompareForm extends OnlinerForm {
 	protected final String locatorItems = "//th[@class='product-table__cell']";
@@ -19,6 +19,11 @@ public abstract class CompareForm extends OnlinerForm {
 		super(By.xpath("//div[@class='catalog-top']//h1[text()='Сравнение товаров']"), "Сравнение товаров");
 	}
 
+	/**
+	 * Return list of value field by name field
+	 * @param nameField
+	 * @return
+	 */
 	public List<String> getListFieldItems(String nameField) {
 		logger.info("Получение значений поля: " + nameField);
 		List<String> result = new ArrayList<String>();

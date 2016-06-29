@@ -7,7 +7,7 @@ import webdriver.elements.*;
 import java.util.List;
 
 /**
- * Раздел каталога.
+ * Абстрактный класс, описывает раздел каталога.
  */
 public abstract class ItemsForm extends OnlinerForm {
 	private final String locatorBrandName = "//div[span[text()='Производитель']]/following-sibling::div//span[text()='%1s']";
@@ -26,6 +26,10 @@ public abstract class ItemsForm extends OnlinerForm {
 		super(locator, formTitle);
 	}
 
+	/**
+	 * Search item by BrandName
+	 * @param brandName
+	 */
 	public void searchItemsByBrandName(String brandName) {
 		logger.info("Выбор производителя");
 		lblBrandNameMore.click();
@@ -33,6 +37,11 @@ public abstract class ItemsForm extends OnlinerForm {
 		checkBoxBrandName.check();
 	}
 
+	/**
+	 * Search item by Price
+	 * @param priceMin
+	 * @param priceMax
+	 */
 	public void searchItemsByPrice(double priceMin, double priceMax) {
 		logger.info("Поиск по цене");
 		if (!(priceMin == 0))
@@ -41,12 +50,19 @@ public abstract class ItemsForm extends OnlinerForm {
 			txbPriceMax.setText(String.valueOf(priceMax));
 	}
 
+	/**
+	 * Sort item by sortType
+	 * @param sortType
+	 */
 	public void sortBy(String sortType) {
 		logger.info("Сортировка по " + sortType);
 		lnkSorting.click();
 		new Label(By.xpath(String.format(locatorSortingType, sortType)), "Сортировать по " + sortType).clickAndWait();
 	}
 
+	/**
+	 * Selecting all items on page
+	 */
 	public void selectAllItemsOnPage() {
 		logger.info("Выбор всех позиций для сравнения");
 		cleanSelection();
@@ -57,6 +73,10 @@ public abstract class ItemsForm extends OnlinerForm {
 		}
 	}
 
+	/**
+	 * Selecting first n-items on page
+	 * @param number
+	 */
 	public void selectFirstItemsOnPage(int number) {
 		logger.info(String.format("Выбор первых %d позиций для сравнения", number));
 		cleanSelection();
@@ -67,6 +87,9 @@ public abstract class ItemsForm extends OnlinerForm {
 		}
 	}
 
+	/**
+	 * Compare selected items
+	 */
 	public void compareSelectedItems() {
 		logger.info("Сравнение товаров");
 		if (!btnCompare.isPresent(3))
@@ -75,6 +98,9 @@ public abstract class ItemsForm extends OnlinerForm {
 		btnCompare.clickAndWait();
 	}
 
+	/**
+	 * Clean list of selection
+	 */
 	public void cleanSelection() {
 		logger.info("Очистка списка для сравнения");
 		if (!btnCompare.isPresent(3))

@@ -14,6 +14,11 @@ public class NotebooksForm extends ItemsForm {
 		super(By.xpath("//div[@class='schema-header']/h1[text()='Ноутбуки']"), "Каталог Ноутбуки");
 	}
 
+	/**
+	 * Search items by screen size
+	 * @param sizeMin
+	 * @param sizeMax
+	 */
 	public void searchItemsByScreenSize(double sizeMin, double sizeMax) {
 		logger.info("Поиск по диагонали экрана");
 		if (!(sizeMin == 0))

@@ -7,6 +7,15 @@ import java.util.List;
  */
 public class CompareMobilesForm extends CompareForm {
 
+	/**
+	 * Assert search result
+	 * @param sizeMin
+	 * @param sizeMax
+	 * @param ramMin
+	 * @param ramMax
+	 * @param batteryMin
+	 * @param batteryMax
+	 */
 	public void assertResultCompare(double sizeMin, double sizeMax, double ramMin, double ramMax, int batteryMin, int batteryMax) {
 		logger.info("Проверка результата поиска");
 		assertSize(sizeMin, sizeMax);
@@ -14,6 +23,11 @@ public class CompareMobilesForm extends CompareForm {
 		assertBattery(batteryMin, batteryMax);
 	}
 
+	/**
+	 * Assert search by Size
+	 * @param sizeMin
+	 * @param sizeMax
+	 */
 	public void assertSize(double sizeMin, double sizeMax) {
 		logger.info("Проверка размера экрана");
 		List<String> listSizeItems = getListFieldItems("Размер экрана");
@@ -28,6 +42,11 @@ public class CompareMobilesForm extends CompareForm {
 		}
 	}
 
+	/**
+	 * Assert search by RAM
+	 * @param ramMin
+	 * @param ramMax
+	 */
 	public void assertRam(double ramMin, double ramMax) {
 		logger.info("Проверка объёма памяти");
 		List<String> listRamItems = getListFieldItems("Оперативная память");
@@ -42,6 +61,11 @@ public class CompareMobilesForm extends CompareForm {
 		}
 	}
 
+	/**
+	 * Assert search by Battery
+	 * @param batteryMin
+	 * @param batteryMax
+	 */
 	public void assertBattery(int batteryMin, int batteryMax) {
 		logger.info("Проверка ёмкости аккумулятора");
 		List<String> listBatteryItems = getListFieldItems("Ёмкость аккумулятора");

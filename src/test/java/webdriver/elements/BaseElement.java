@@ -334,7 +334,7 @@ public abstract class BaseElement extends BaseEntity {
 
 	/**
 	 * Returns list of all BaseElements by same locator like this instance.
-	 * Accepts only XPath locators, otherwise asserts Fatal Error!
+	 * Accepts only elements with XPath locators, otherwise asserts Fatal Error!
 	 * Method uses the Reflection API.
 	 *
 	 * @return
@@ -351,7 +351,7 @@ public abstract class BaseElement extends BaseEntity {
 		String locatorElement = locator.toString();
 
 		if (!locatorElement.startsWith("By.xpath: "))
-			logger.fatal("Change locator of Element on XPatch!");
+			logger.fatal("Change the locator of BaseElement to XPatch!");
 
 		for (int i = 1; i <= listWebElements.size(); i++) {
 			String newLocator = String.format("xpath=(%s)[%d]", locatorElement.substring(10), i);
@@ -362,18 +362,24 @@ public abstract class BaseElement extends BaseEntity {
 						.newInstance(new Object[]{newLocator, theClass.getSimpleName() + " " + i});
 				listElements.add((BaseElement) object);
 			} catch (ReflectiveOperationException e) {
-				logger.fatal("Ошибка создания элементов");
+				logger.fatal("Ошибка создания объекта с помощью Reflection API");
 			}
 		}
 		return listElements;
 	}
 
+	/**
+	 * Switch Driver to next frame by the instance locator
+	 */
 	public void switchToFrame() {
 		waitForIsElementPresent();
 		browser.getDriver().switchTo().frame(browser.getDriver().findElement(locator));
 		browser.waitForPageToLoad();
 	}
 
+	/**
+	 *Switch Driver to default frame
+	 */
 	public void switchToDefault() {
 		browser.getDriver().switchTo().defaultContent();
 	}

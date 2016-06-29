@@ -9,6 +9,10 @@ import webdriver.elements.Label;
 public class CompareTabletsForm extends CompareForm {
 //	private final String locatorItems= "//th[@class='product-table__cell']";
 
+	/**
+	 * Assert search by number items
+	 * @param numberFirstItems
+	 */
 	public void assertResultByNumberItems(int numberFirstItems) {
 		logger.info("Проверка результата поиска");
 		int numberComparedItems = new Label(By.xpath(locatorItems)).getListWebElements(By.xpath(locatorItems)).size();

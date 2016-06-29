@@ -21,6 +21,15 @@ public class MobilesForm extends ItemsForm {
 		super(By.xpath("//div[@class='schema-header']/h1[text()='Мобильные телефоны']"), "Каталог Мобильные телефоны");
 	}
 
+	/**
+	 * Search items
+	 * @param sizeMin
+	 * @param sizeMax
+	 * @param ramMin
+	 * @param ramMax
+	 * @param batteryMin
+	 * @param batteryMax
+	 */
 	public void searchItems(double sizeMin, double sizeMax, double ramMin, double ramMax, int batteryMin, int batteryMax) {
 		logger.info("Поиск товаров");
 		searchItemsByScreenSize(sizeMin, sizeMax);
@@ -28,6 +37,11 @@ public class MobilesForm extends ItemsForm {
 		searchItemsByBatteryCapacity(batteryMin, batteryMax);
 	}
 
+	/**
+	 * Search items by screen size
+	 * @param sizeMin
+	 * @param sizeMax
+	 */
 	public void searchItemsByScreenSize(double sizeMin, double sizeMax) {
 		logger.info("Поиск по размеру экрана");
 		if (!(sizeMin == 0))
@@ -36,6 +50,11 @@ public class MobilesForm extends ItemsForm {
 			cmbSizeMax.selectByValue(String.format("%.0f", sizeMax * 100));
 	}
 
+	/**
+	 * Search items by screen resolution
+	 * @param resolutionMin
+	 * @param resolutionMax
+	 */
 	public void searchItemsByResolution(String resolutionMin, String resolutionMax) {
 		logger.info("Поиск по разрешению экрана");
 		if (!(resolutionMin.isEmpty()))
@@ -44,6 +63,11 @@ public class MobilesForm extends ItemsForm {
 			cmbResolutionMax.selectByValue(resolutionMin);
 	}
 
+	/**
+	 * Search items by RAM size
+	 * @param ramMin
+	 * @param ramMax
+	 */
 	public void searchItemsByRamSize(double ramMin, double ramMax) {
 		logger.info("Поиск по объёму оперативной памяти");
 		if (!(ramMin == 0))
@@ -52,6 +76,11 @@ public class MobilesForm extends ItemsForm {
 			txbRamMax.setText(String.valueOf(ramMax));
 	}
 
+	/**
+	 * Search items by battery capacity
+	 * @param batteryMin
+	 * @param batteryMax
+	 */
 	public void searchItemsByBatteryCapacity(int batteryMin, int batteryMax) {
 		logger.info("Поиск по ёмкости аккумулятора");
 		if (!(batteryMin == 0))

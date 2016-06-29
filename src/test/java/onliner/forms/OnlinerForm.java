@@ -1,6 +1,5 @@
 package onliner.forms;
 
-import onliner.forms.profile.ProfileForm;
 import org.openqa.selenium.By;
 import webdriver.BaseForm;
 import webdriver.elements.Label;
@@ -8,7 +7,7 @@ import webdriver.elements.Link;
 import webdriver.elements.TextBox;
 
 /**
- * Onliner Form
+ * Абстрактный класс, описывает базовую страницу Onliner.by
  */
 public abstract class OnlinerForm extends BaseForm {
 	private final String locatorTopMenu = "//a[@class='b-main-navigation__link']/span[text()='%s']";
@@ -24,6 +23,11 @@ public abstract class OnlinerForm extends BaseForm {
 		super(locator, formTitle);
 	}
 
+	/**
+	 * User authorization
+	 * @param login
+	 * @param password
+	 */
 	public void login(String login, String password) {
 		logger.info("Логин пользователя");
 		if (lblTopProfile.isPresent())
@@ -37,13 +41,19 @@ public abstract class OnlinerForm extends BaseForm {
 		}
 	}
 
-	public ProfileForm goToProfile(){
+	/**
+	 * Navigate to Profile
+	 */
+	public void goToProfile(){
 		logger.info("Переход в профиль");
 		lblTopProfile.waitForIsElementPresent();
 		lnkProfile.clickAndWait();
-		return new ProfileForm();
 	}
 
+	/**
+	 * Navigate top menu
+	 * @param menuItem
+	 */
 	public void navigateTopMenu(String menuItem) {
 		logger.info("Переход из главного меню в : " + menuItem);
 		String menuItemLocator = String.format(locatorTopMenu, menuItem);
@@ -51,17 +61,27 @@ public abstract class OnlinerForm extends BaseForm {
 		menuLink.clickAndWait();
 	}
 
+	/**
+	 * Logout user
+	 */
 	public void logout() {
 		logger.info("Выход из аккаунта");
 		lnkExit.clickAndWait();
 	}
 
+	/**
+	 * Search item on catalog by name
+	 * @param nameItem
+	 */
 	public void searchItem(String nameItem) {
 		logger.info("Поиск товара");
 		txbSearchItem.setText(nameItem);
 		lblSearchFrame.switchToFrame();
 	}
 
+	/**
+	 * Navigate to Cart
+	 */
 	public void goToCart() {
 		logger.info("Переход в корзину");
 		lnkCart.clickAndWait();

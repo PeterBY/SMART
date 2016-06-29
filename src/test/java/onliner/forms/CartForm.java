@@ -19,12 +19,18 @@ public class CartForm extends BaseForm {
 		super(By.className("cart-content"), "Корзина");
 	}
 
-
+	/**
+	 * Assert item in Cart by name
+	 * @param nameItem
+	 */
 	public void assertNameItem(String nameItem) {
 		logger.info("Проверка содержимого корзины");
 		doAssert(lblNameItem.getText().contains(nameItem), "Ok: название товара соответвует поисковому", "Error: название товара не соответвует поисковому");
 	}
 
+	/**
+	 * Clear Cart
+	 */
 	public void clear() {
 		logger.info("Очистка корзины");
 		List<BaseElement> list = btnDeleteItem.getAllElements();
