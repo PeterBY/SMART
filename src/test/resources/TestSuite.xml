@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Onliner" verbose="1">
+    <test name="Profile Preferences Test">
+        <parameter name="login" value="3kgloa6kcu0vc@riko.ws"/>
+        <parameter name="password" value="41m7rw"/>
+        <parameter name="day" value="28"/>
+        <parameter name="month" value="06"/>
+        <parameter name="year" value="1984"/>
+        <classes>
+            <class name="onliner.tests.ProfilePreferencesTest"/>
+        </classes>
+    </test>
+    <test name="Filter And Compare Mobiles Test">
+        <parameter name="sizeMin" value="5"/>
+        <parameter name="sizeMax" value="0"/>
+        <parameter name="ramMin" value="2"/>
+        <parameter name="ramMax" value="0"/>
+        <parameter name="batteryMin" value="4000"/>
+        <parameter name="batteryMax" value="0"/>
+        <parameter name="sortType" value="Дешевые"/>
+        <parameter name="numberFirstItems" value="5"/>
+        <classes>
+            <class name="onliner.tests.FilterAndCompareMobiles"/>
+        </classes>
+    </test>
+    <test name="Filter And Compare Tablets Test">
+        <parameter name="brandName" value="Apple"/>
+        <parameter name="sortType" value="Дешевые"/>
+        <parameter name="sizeMin" value="9"/>
+        <parameter name="sizeMax" value="0"/>
+        <parameter name="numberFirstItems" value="5"/>
+        <classes>
+            <class name="onliner.tests.FilterAndCompareTablets"/>
+        </classes>
+    </test>
+    <test name="Filter And Sorting Notebooks Test">
+        <parameter name="brandName" value="ASUS"/>
+        <parameter name="sortType" value="Дешевые"/>
+        <parameter name="priceMin" value="0"/>
+        <parameter name="priceMax" value="999"/>
+        <classes>
+            <class name="onliner.tests.FilterAndSortingNotebooks"/>
+        </classes>
+    </test>
+    <test name="Search And Add To Cart Item Test">
+        <parameter name="nameItem" value="MEIZU M3 Note"/>
+        <classes>
+            <class name="onliner.tests.SearchAndAddToCartItem"/>
+        </classes>
+    </test>
+</suite>
